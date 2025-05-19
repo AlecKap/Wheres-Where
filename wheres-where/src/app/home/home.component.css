@@ -3,15 +3,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 75vh;
+    min-height: 35vh;
     text-align: center;
     padding: 20px;
 }
 
 h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: #333;
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
 }
 
 .button-container {
@@ -25,7 +25,7 @@ h1 {
     font-size: 1.2rem;
     border: none;
     border-radius: 8px;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     cursor: pointer;
     min-width: 200px;
@@ -33,5 +33,5 @@ h1 {
 }
 
 .nav-button:hover {
-    background-color: #2f7833;
+    background-color: var(--primary-color-dark);
 }
