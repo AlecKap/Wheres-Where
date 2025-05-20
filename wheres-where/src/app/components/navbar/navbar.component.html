@@ -2,7 +2,7 @@
   <h1 *ngIf="isHomePage()" class="centered">Welcome to Where's Where!</h1>
   <h1 *ngIf="!isHomePage()" [class.centered]="isHomePage()">Where's Where!</h1>
   <div class="nav-buttons">
-    <button *ngIf="isResultsPage() || isLeaderboardPage()" routerLink="/game" class="button">New Game</button>
-    <button *ngIf="!isHomePage()" routerLink="" class="button">Back To Main Menu</button>
+    <button *ngIf="isResultsPage() || isLeaderboardPage()" routerLink="/game" class="button" (click)="soundService.playClick()">New Game</button>
+    <button *ngIf="!isHomePage()" routerLink="" class="button" (click)="soundService.playClick()">Back To Main Menu</button>
   </div>
 </nav>

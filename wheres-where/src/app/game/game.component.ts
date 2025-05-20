@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountryDataService } from '../services/country-data.service';
 import { FlagComponent } from '../components/flag/flag.component';
+import { SoundService } from '../services/sound.service';
 import { GameSettings } from '../models/game-settings.interface';
 import { Router } from '@angular/router';
 
@@ -20,7 +21,7 @@ export class GameComponent implements OnInit {
   questionsRemaining: number = 0;
   skipsRemaining: number = 3;
 
-  constructor(private countryDataService: CountryDataService, private router: Router) {
+  constructor(private countryDataService: CountryDataService, private router: Router, public soundService: SoundService) {
     const settingsJson = localStorage.getItem('gameSettings');
     if (settingsJson) {
       this.gameSettings = JSON.parse(settingsJson);
@@ -64,12 +65,14 @@ export class GameComponent implements OnInit {
     }
 
     if (this.checkAnswer(cleanedGuess)) {
+      this.soundService.playCorrect();
       this.successMessage = 'Correct!';
       setTimeout(() => {
         this.getNewCountry();
         this.successMessage = '';
       }, 600);
     } else {
+      this.soundService.playWrong();
       this.errorMessage = 'Incorrect.';
       setTimeout(() => {
         this.getNewCountry();
@@ -80,6 +83,7 @@ export class GameComponent implements OnInit {
   }
 
   skipFlag() {
+    this.soundService.playWrong();
     if (this.skipsRemaining <= 0) {
       this.errorMessage = 'No skips remaining';
       return;

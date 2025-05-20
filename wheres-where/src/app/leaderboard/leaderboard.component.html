@@ -1,1 +1,13 @@
-<p>leaderboard works!</p>
+<div class="leaderboard-container">
+  <h2 class="leaderboard-title">🏆 Leaderboard</h2>
+  <div *ngIf="scores.length === 0" class="no-scores">
+    No scores yet. Go play and get on the board!
+  </div>
+  <ul class="score-list" *ngIf="scores.length > 0">
+    <li *ngFor="let entry of scores; let i = index" class="score-entry">
+      <span class="rank">#{{ i + 1 }}</span>
+      <span class="name">{{ entry.name }}</span>
+      <span class="score">{{ entry.score }}</span>
+    </li>
+  </ul>
+</div>

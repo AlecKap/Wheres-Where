@@ -24,11 +24,11 @@
       {{ successMessage }}
     </div>
     <div class="button-container">
-      <button type="submit" class="button">Submit Guess</button>
+      <button type="submit" class="button" (click)="soundService.playClick()">Submit Guess</button>
       <button
         type="button"
         class="button"
-        (click)="skipFlag()"
+        (click)="soundService.playClick(); skipFlag()"
         [disabled]="skipsRemaining <= 0"
       >
         {{ skipsRemaining > 0 ? 'Skip (' + skipsRemaining + ' left)' : 'No Skips Left' }}

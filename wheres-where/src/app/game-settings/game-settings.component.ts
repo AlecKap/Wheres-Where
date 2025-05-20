@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SoundService } from '../services/sound.service';
 import { Router } from '@angular/router';
 import { CountryDataService } from '../services/country-data.service';
 import { GameSettings } from '../models/game-settings.interface';
@@ -42,3 +43,4 @@ export class GameSettingsComponent {
     this.router.navigate(['/game']);
   }
 }
+
