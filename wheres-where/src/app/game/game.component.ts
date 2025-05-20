@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountryDataService } from '../services/country-data.service';
 import { FlagComponent } from '../components/flag/flag.component';
 import { SoundService } from '../services/sound.service';
+import { GameSettings } from '../models/game-settings.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -15,19 +17,38 @@ export class GameComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
   currentCountry: string = '';
+  gameSettings: GameSettings | null = null;
+  questionsRemaining: number = 0;
+  skipsRemaining: number = 3;
 
-  constructor(private countryDataService: CountryDataService,
-  public soundService: SoundService) {}
+  constructor(private countryDataService: CountryDataService, private router: Router, public soundService: SoundService) {
+    const settingsJson = localStorage.getItem('gameSettings');
+    if (settingsJson) {
+      this.gameSettings = JSON.parse(settingsJson);
+      this.questionsRemaining = this.gameSettings?.numberOfQuestions ?? 0;
+    }
+  }
 
   ngOnInit() {
+    if (!this.gameSettings) {
+      this.router.navigate(['/game-settings']);
+      return;
+    }
     this.getNewCountry();
     console.log('the current country is', this.currentCountry);
+    console.log('the game settings are', this.gameSettings);
   }
 
   getNewCountry() {
-    this.currentCountry = this.countryDataService.getRandomCountry();
+    const continent = this.gameSettings?.selectedContinent || undefined;
+    this.currentCountry = this.countryDataService.getRandomCountry(continent);
     this.errorMessage = '';
     this.successMessage = '';
+
+    if (this.questionsRemaining === 0) {
+      this.router.navigate(['/results']);
+    }
+    this.questionsRemaining--;
   }
 
   checkAnswer(guess: string): boolean {
@@ -49,13 +70,13 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.getNewCountry();
         this.successMessage = '';
-      }, 1000);
+      }, 600);
     } else {
       this.soundService.playWrong();
-      this.errorMessage = 'Sorry, that is incorrect.';
+      this.errorMessage = 'Incorrect.';
       setTimeout(() => {
         this.getNewCountry();
-      }, 1500);
+      }, 600);
     }
     
     this.playerGuess = '';
@@ -63,9 +84,14 @@ export class GameComponent implements OnInit {
 
   skipFlag() {
     this.soundService.playWrong();
+    if (this.skipsRemaining <= 0) {
+      this.errorMessage = 'No skips remaining';
+      return;
+    }
+    this.skipsRemaining--;
+    this.questionsRemaining++
     this.getNewCountry();
     this.playerGuess = '';
     this.errorMessage = '';
-    console.log('Skipped flag, new country:', this.currentCountry);
   }
 }

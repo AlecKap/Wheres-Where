@@ -40,7 +40,7 @@ export class CountryDataService {
     ],
     oceania: [ "Australia", "Fiji", "Kiribati", "Marshall Islands", "Micronesia", "Nauru", "New Zealand", "Palau",
               "Papua New Guinea", "Samoa", "Solomon Islands", "Tonga", "Tuvalu", "Vanuatu"
-    ],
+    ]
   };
 
   getRandomCountry(continent?: string): string {

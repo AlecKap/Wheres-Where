@@ -1,1 +1,34 @@
-<p>game-settings works!</p>
+
+<div class="settings-container">
+  <h2>Game Settings</h2>
+  
+  <div class="settings-form">
+    <div class="setting-group">
+      <h3>Number of Questions</h3>
+      <div class="radio-input">
+        <label *ngFor="let option of questionOptions">
+          <input 
+            type="radio" 
+            [id]="'q' + option" 
+            name="questionCount" 
+            [value]="option" 
+            [(ngModel)]="selectedQuestions"
+          />
+          <span>{{ option }}</span>
+        </label>
+        <span class="selection"></span>
+      </div>
+    </div>
+
+    <div class="setting-group">
+      <h3>Select Continent</h3>
+      <select [(ngModel)]="selectedContinent" class="continent-select">
+        <option *ngFor="let continent of continents" [value]="continent">
+          {{continent}}
+        </option>
+      </select>
+    </div>
+
+    <button (click)="startGame()" class="button">Start Game</button>
+  </div>
+</div>
