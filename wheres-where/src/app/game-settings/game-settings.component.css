@@ -1,0 +1,163 @@
+.settings-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--bg-color-wht);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+h2 {
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h3 {
+  color: var(--text-dark);
+  font-size: 1.2rem;
+}
+
+.questions-options {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.continent-select {
+  padding: 0.8em;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.button {
+  color: var(--text-light);
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--primary-color-btn);
+  transition: 0.2s;
+  box-shadow: var(--box-shadow-btn);
+}
+
+.button:hover {
+  color: var(--text-light);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--secondary-color);
+  box-shadow: 0.25rem 0.25rem var(--secondary-color-dark);
+}
+
+.button:active {
+  transform: translate(0);
+  box-shadow: none;
+  background: var(--secondary-color);
+}
+
+@media screen and (max-width: 480px) {
+  .settings-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .questions-options {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* For num of questions */ 
+.radio-input input {
+  display: none;
+}
+
+.radio-input {
+  --container_width: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  width: var(--container_width);
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+
+.radio-input label {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 14px;
+}
+
+.selection {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: calc(var(--container_width) / 4);
+  z-index: 0;
+  left: 0;
+  top: 0;
+  transition: 0.15s ease;
+}
+
+.radio-input label:has(input:checked) {
+  color: var(--secondary-color);
+}
+
+.radio-input label:has(input:checked) ~ .selection {
+  background-color: var(--primary-color);
+  display: inline-block;
+}
+
+.radio-input label:nth-child(1):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 0 / 4));
+}
+
+.radio-input label:nth-child(2):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 1 / 4));
+}
+
+.radio-input label:nth-child(3):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 2 / 4));
+}
+
+.radio-input label:nth-child(4):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 3 / 4));
+}
