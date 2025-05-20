@@ -3,35 +3,32 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   box-shadow: var(--box-shadow-nav);
 }
 
 h1 {
-  color: var(--bg-color-wht);
+  color: var(--primary-color-light);
   margin: 0;
   font-size: 1.5rem;
 }
 
 .button {
-  --bg: var(--primary-color-dark);
-  --hover-bg: var(--primary-color-btn-light);
-  --hover-text: var(--primary-color-dark);
-  color: #fff;
+  color: var(--text-light);
   cursor: pointer;
-  border: 1px solid var(--bg);
+  border: 1px solid var(--primary-color-dark);
   border-radius: 4px;
   padding: 0.8em 2em;
-  background: var(--bg);
+  background: var(--primary-color-dark);
   transition: 0.2s;
   box-shadow: var(--box-shadow-btn);
 }
 
 .button:hover {
-  color: var(--hover-text);
+  color: var(--text-light);
   transform: translate(-0.25rem, -0.25rem);
-  background: var(--hover-bg);
-  box-shadow: 0.25rem 0.25rem var(--bg);
+  background: var(--primary-color-btn);
+  box-shadow: 0.25rem 0.25rem var(--secondary-color-dark);
 }
 
 .button:active {
@@ -68,7 +65,7 @@ h1 {
     padding: 8px 16px;
     border: 2px solid var(--border-color);
     border-radius: 4px;
-    background-color: transparent;
+    background-color: var(--primary-color-dark);
     color: var(--bg-color-wht);
     cursor: pointer;
     font-size: 1rem;
@@ -76,8 +73,8 @@ h1 {
   }
   
   .button:hover {
-    background-color: var(--bg-color-wht);
-    color: var(--primary-color);
+    background-color: var(--primary-color-btn);;
+    color: var(--text-light);
   }
   
   .button {
