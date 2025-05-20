@@ -74,6 +74,19 @@
   background: var(--secondary-color);
 }
 
+.error-message {
+  color: #dc3545;
+  font-size: 2rem;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+.success-message {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .game-container {
     padding: 0.5rem;
@@ -148,5 +161,9 @@
   .guess-input {
     font-size: 13px;
     height: 36px;
+  }
+
+  .error-message {
+    font-size: 0.75rem;
   }
 }
