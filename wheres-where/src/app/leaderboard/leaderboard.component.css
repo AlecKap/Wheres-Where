@@ -1,0 +1,51 @@
+.leaderboard-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--bg-color-wht);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-btn);
+  text-align: center;
+}
+
+.leaderboard-title {
+  font-size: 2rem;
+  color: var(--primary-color-dark);
+  margin-bottom: 1.5rem;
+}
+
+.no-scores {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.score-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.score-entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--secondary-color-light);
+  font-size: 1.1rem;
+}
+
+.rank {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.name {
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 1rem;
+  color: var(--text-dark);
+}
+
+.score {
+  color: var(--primary-color);
+  font-weight: bold;
+}
