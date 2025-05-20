@@ -9,6 +9,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ResultsComponent } from './results/results.component';
 import { GameSettingsComponent } from './game-settings/game-settings.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FlagComponent } from './components/flag/flag.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ResultsComponent,
     GameSettingsComponent,
     NavbarComponent,
+    FlagComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
