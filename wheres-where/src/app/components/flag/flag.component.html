@@ -1,0 +1,8 @@
+<div class="flag-container">
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <img *ngIf="!isLoading && !error" 
+       [src]="flagUrl" 
+       [alt]="'Flag'" 
+       class="flag-image">
+</div>
