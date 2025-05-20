@@ -1,9 +1,12 @@
 :root {
   /* Primary Colors */
-  --primary-color: #658834;
-  --primary-color-dark: #4e692c;
-  --primary-color-light: #749b3d;
+  --primary-color: #7cc133;
+  --primary-color-dark: #659e28;
+  --primary-color-light: rgb(165, 221, 86);
+  --primary-color-btn: #7cc133;
   --primary-color-btn-light: #9fd553;
+  --secondary-color: #3344c1;
+  --secondary-color-dark: #202a7a;
 
   /* Text Colors */
   --text-dark: #202b11;
