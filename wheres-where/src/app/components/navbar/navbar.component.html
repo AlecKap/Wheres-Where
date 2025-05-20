@@ -1,4 +1,8 @@
 <nav>
-  <h1>Where's Where</h1>
-  <button routerLink="" class="nav-button">Back To Main Menu</button>
+  <h1 *ngIf="isHomePage()" class="centered">Welcome to Where's Where!</h1>
+  <h1 *ngIf="!isHomePage()" [class.centered]="isHomePage()">Where's Where!</h1>
+  <div class="nav-buttons">
+    <button *ngIf="isResultsPage() || isLeaderboardPage()" routerLink="/game" class="button">New Game</button>
+    <button *ngIf="!isHomePage()" routerLink="" class="button">Back To Main Menu</button>
+  </div>
 </nav>
