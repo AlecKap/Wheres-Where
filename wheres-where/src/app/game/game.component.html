@@ -1,3 +1,29 @@
 <div class="game-container">
-  <app-flag></app-flag>
+  <div class="flag-display">
+    <app-flag [country]="currentCountry"></app-flag>
+  </div>
+
+  <form class="guess-form" (ngSubmit)="submitGuess()">
+    <div class="input-container">
+      <input 
+        type="text" 
+        [(ngModel)]="playerGuess" 
+        name="guess"
+        placeholder="Enter country name..."
+        class="guess-input"
+        autocomplete="off"
+        required
+      >
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+    <div class="button-container">
+      <button type="submit" class="button">Submit Guess</button>
+      <button type="button" class="button" (click)="skipFlag()">Skip</button>
+    </div>
+  </form>
 </div>
