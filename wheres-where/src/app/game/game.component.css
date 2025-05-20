@@ -1,0 +1,152 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flag-display {
+  width: 100%;
+  padding: 2rem;
+}
+
+.guess-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.guess-input {
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 2px solid var(--secondary-color);
+  border-radius: 25px;
+  font-size: 1rem;
+  background: var(--bg-color-wht);
+  color: var(--text-dark);
+}
+
+.guess-input:focus {
+  outline: none;
+  border-color: var(--primary-color-dark);
+  box-shadow: 0 0 0 2px var(--secondary-color-light);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  color: var(--text-light);
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--primary-color-btn);
+  transition: 0.2s;
+  box-shadow: var(--box-shadow-btn);
+}
+
+.button:hover {
+  color: var(--text-light);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--secondary-color);
+  box-shadow: 0.25rem 0.25rem var(--secondary-color-dark);
+}
+
+.button:active {
+  transform: translate(0);
+  box-shadow: none;
+  background: var(--secondary-color);
+}
+
+@media screen and (max-width: 768px) {
+  .game-container {
+    padding: 0.5rem;
+    gap: 1rem;
+    width: 90%;
+  }
+
+  .flag-display {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .guess-form {
+    max-width: 90%;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .input-container {
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .guess-input {
+    padding: 0.5em 0.8em;
+    font-size: 14px;
+    height: 40px;
+  }
+
+  .button-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .button {
+    width: auto;
+    min-width: 100px;
+    padding: 0.5em 1em;
+    font-size: 14px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .game-container {
+    width: 95%;
+    padding: 0.25rem;
+  }
+
+  .guess-form {
+    max-width: 95%;
+  }
+
+  .input-container,
+  .button-container {
+    max-width: 280px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .button {
+    min-width: 90px;
+    font-size: 13px;
+    height: 36px;
+  }
+
+  .guess-input {
+    font-size: 13px;
+    height: 36px;
+  }
+}
