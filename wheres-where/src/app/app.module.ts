@@ -11,6 +11,7 @@ import { GameSettingsComponent } from './game-settings/game-settings.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FlagComponent } from './components/flag/flag.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
