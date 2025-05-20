@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SoundService } from '../services/sound.service';
 
 @Component({
   selector: 'app-game-settings',
@@ -9,3 +10,4 @@ import { Component } from '@angular/core';
 export class GameSettingsComponent {
 
 }
+

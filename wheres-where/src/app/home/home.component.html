@@ -35,8 +35,8 @@
 </div>
 
   <div class="button-container">
-    <button class="button" routerLink="/game">Start Game</button>
-    <button class="button" routerLink="/game-settings">Game Settings</button>
-    <button class="button" routerLink="/leaderboard">Leaderboard</button>
+    <button class="button" routerLink="/game"(click)="soundService.playClick()">Start Game</button>
+    <button class="button" routerLink="/game-settings"(click)="soundService.playClick()">Game Settings</button>
+    <button class="button" routerLink="/leaderboard"(click)="soundService.playClick()">Leaderboard</button>
   </div>
 </div>

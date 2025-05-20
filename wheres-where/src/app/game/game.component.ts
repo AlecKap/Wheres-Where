@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountryDataService } from '../services/country-data.service';
 import { FlagComponent } from '../components/flag/flag.component';
+import { SoundService } from '../services/sound.service';
 
 @Component({
   selector: 'app-game',
@@ -15,7 +16,8 @@ export class GameComponent implements OnInit {
   successMessage: string = '';
   currentCountry: string = '';
 
-  constructor(private countryDataService: CountryDataService) {}
+  constructor(private countryDataService: CountryDataService,
+  public soundService: SoundService) {}
 
   ngOnInit() {
     this.getNewCountry();
@@ -42,12 +44,14 @@ export class GameComponent implements OnInit {
     }
 
     if (this.checkAnswer(cleanedGuess)) {
+      this.soundService.playCorrect();
       this.successMessage = 'Correct!';
       setTimeout(() => {
         this.getNewCountry();
         this.successMessage = '';
       }, 1000);
     } else {
+      this.soundService.playWrong();
       this.errorMessage = 'Sorry, that is incorrect.';
       setTimeout(() => {
         this.getNewCountry();
@@ -58,6 +62,7 @@ export class GameComponent implements OnInit {
   }
 
   skipFlag() {
+    this.soundService.playWrong();
     this.getNewCountry();
     this.playerGuess = '';
     this.errorMessage = '';
