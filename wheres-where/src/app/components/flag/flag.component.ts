@@ -11,6 +11,12 @@ import { CountryDataService } from '../../services/country-data.service';
 
 export class FlagComponent implements OnInit {
   @Input() continent?: string;
+  @Input() set country(value: string) {
+    if (value) {
+      this.currentCountry = value;
+      this.loadFlag(value);
+    }
+  }
   currentCountry: string = '';
   flagUrl: string | null = null;
   isLoading = true;
@@ -18,23 +24,22 @@ export class FlagComponent implements OnInit {
 
   constructor(
     private flagService: FlagService,
-    private countryDataService: CountryDataService
   ) {}
 
   ngOnInit(): void {
-    this.loadNewFlag();
+    if (this.currentCountry) {
+      this.loadFlag(this.currentCountry);
+    }
   }
 
-  async loadNewFlag(): Promise<void> {
+  private async loadFlag(country: string): Promise<void> {
     try {
       this.isLoading = true;
       this.error = null;
-      this.currentCountry = this.countryDataService.getRandomCountry(this.continent);
       
-      const response = await this.flagService.getCountryFlag(this.currentCountry);
+      const response = await this.flagService.getCountryFlag(country);
       if (response && response.length > 0) {
         this.flagUrl = response[0].flags.png;
-        this.isLoading = false;
       }
     } catch (err) {
       this.error = 'Error loading flag. Please try again.';
