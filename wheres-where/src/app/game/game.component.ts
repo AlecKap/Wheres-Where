@@ -40,12 +40,21 @@ export class GameComponent implements OnInit {
       this.router.navigate(['/game-settings']);
       return;
     }
+    this.countryDataService.resetUsedCountries();
     this.getNewCountry();
   }
 
   getNewCountry() {
     const continent = this.gameSettings?.selectedContinent || undefined;
-    this.currentCountry = this.countryDataService.getRandomCountry(continent);
+    const newCountry = this.countryDataService.getRandomCountry(continent);
+
+    if (!newCountry) {
+      localStorage.setItem('gameResults', JSON.stringify(this.gameResults));
+      this.router.navigate(['/results']);
+      return;
+    }
+
+    this.currentCountry = newCountry;
     this.errorMessage = '';
     this.successMessage = '';
 
@@ -53,6 +62,7 @@ export class GameComponent implements OnInit {
       localStorage.setItem('gameResults', JSON.stringify(this.gameResults));
       this.router.navigate(['/results']);
     }
+
     this.questionsRemaining--;
     console.log('country:', this.currentCountry);
   }
