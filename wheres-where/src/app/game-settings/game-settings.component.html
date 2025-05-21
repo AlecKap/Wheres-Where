@@ -3,7 +3,7 @@
   <h2>Game Settings</h2>
   
   <div class="settings-form">
-    <div class="setting-group">
+    <div class="setting-group-audio">
       <h3>Audio</h3>
       <label class="switch">
         <input checked="" type="checkbox" class="toggle" (click)="soundService.playClick()">
@@ -14,6 +14,7 @@
 
     <div class="setting-group">
       <h3>Number of Questions</h3>
+      <p>*10 or more questions to be eligible for the leaderboard.</p>
       <div class="radio-input">
         <label *ngFor="let option of questionOptions">
           <input 

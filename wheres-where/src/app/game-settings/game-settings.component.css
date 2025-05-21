@@ -26,6 +26,12 @@ h2 {
   align-items: center;
 }
 
+.setting-group-audio {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
 h3 {
   color: var(--text-dark);
   font-size: 1.2rem;
@@ -74,6 +80,14 @@ h3 {
   transform: translate(0);
   box-shadow: none;
   background: var(--secondary-color);
+}
+
+p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  opacity: 0.6;
+  text-align: center;
 }
 
 @media screen and (max-width: 480px) {
@@ -170,11 +184,11 @@ h3 {
 
 /* For audio toggle */ 
 .switch {
-  --input-focus: var(--secondary-color);
+  --input-focus: var(--primary-color);
   --bg-color: #fff;
   --bg-color-alt: #666;
   --main-color: #323232;
-  --input-out-of-focus: #ccc;
+  --input-out-of-focus: var(--secondary-color);
   position: relative;
   display: flex;
   flex-direction: column;

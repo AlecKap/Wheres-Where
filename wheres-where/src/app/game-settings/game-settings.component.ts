@@ -45,9 +45,7 @@ export class GameSettingsComponent {
   }
 
   selectContinent(continent: string) {
-    console.log('Selected continent:', continent);
     this.selectedContinent = continent;
-    console.log('Selected continent:', this.selectedContinent);
   }
 }
 
