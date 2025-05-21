@@ -19,7 +19,7 @@ h1 {
   border: 1px solid var(--primary-color-dark);
   border-radius: 4px;
   padding: 0.8em 2em;
-  background: var(--primary-color-dark);
+  background: var(--primary-color);
   transition: 0.2s;
   box-shadow: var(--box-shadow-btn);
 }
@@ -27,7 +27,7 @@ h1 {
 .button:hover {
   color: var(--text-light);
   transform: translate(-0.25rem, -0.25rem);
-  background: var(--primary-color-btn);
+  background: var(--primary-color-dark);
   box-shadow: 0.25rem 0.25rem var(--secondary-color-dark);
 }
 
@@ -63,9 +63,9 @@ h1 {
   
   .button {
     padding: 8px 16px;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--primary-color-dark);
     border-radius: 4px;
-    background-color: var(--primary-color-dark);
+    background-color: var(--primary-color);
     color: var(--bg-color-wht);
     cursor: pointer;
     font-size: 1rem;
