@@ -23,7 +23,8 @@ export class ResultsComponent implements OnInit {
     try {
       this.gameResults = JSON.parse(resultsJson);
       const percentage = this.gameResults?.totalScore?.percentage;
-      if (percentage && !isNaN(percentage) && percentage >= 70) {
+      const numOfQuestions = this.gameResults?.totalScore?.total;
+      if (percentage && !isNaN(percentage) && percentage >= 70 && numOfQuestions && numOfQuestions >= 10) {
         this.showNameInput = true;
       }
     } catch (error) {
