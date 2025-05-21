@@ -1,1 +1,46 @@
-<p>results works!</p>
+<div class="results-container" *ngIf="gameResults">
+  <h2>Game Results</h2>
+  
+  <div class="results-card">
+    <div class="score-header">
+      <div class="region">Region</div>
+      <div class="stats">
+        <span>Correct</span>
+        <span>Total</span>
+        <span>Percentage</span>
+      </div>
+    </div>
+
+    <div class="score-row total">
+      <div class="region">Total Score</div>
+      <div class="stats">
+        <span>{{ gameResults.totalScore.correct }}</span>
+        <span>{{ gameResults.totalScore.total }}</span>
+        <span>{{ gameResults.totalScore.percentage | number:'1.0-0' }}%</span>
+      </div>
+    </div>
+
+    <div class="score-row" *ngFor="let continent of objectKeys(gameResults.continentScores)">
+      <div class="region">{{ continent }}</div>
+      <div class="stats">
+        <span>{{ gameResults.continentScores[continent].correct }}</span>
+        <span>{{ gameResults.continentScores[continent].total }}</span>
+        <span>{{ gameResults.continentScores[continent].percentage | number:'1.0-0' }}%</span>
+      </div>
+    </div>
+
+     <div class="country-scores" *ngIf="gameResults.countryScores && hasCountryScores()">
+      <h3>Country Breakdown</h3>
+      <div class="score-row" *ngFor="let country of sortedCountryScores()">
+        <div class="region">{{ country }}</div>
+        <div class="stats">
+          <span>{{ gameResults.countryScores[country].correct }}</span>
+          <span>{{ gameResults.countryScores[country].total }}</span>
+          <span>{{ gameResults.countryScores[country].percentage | number:'1.0-0' }}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button (click)="playAgain()" class="play-again-btn">Play Again</button>
+</div>
