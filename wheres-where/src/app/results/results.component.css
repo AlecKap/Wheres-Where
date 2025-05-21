@@ -118,6 +118,69 @@ h2 {
   background: var(--secondary-color);
 }
 
+.name-input-container {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.name-input {
+  padding: 0.8em 1em;
+  border: 2px solid var(--secondary-color);
+  border-radius: 4px;
+  font-size: .75rem;
+  width: 200px;
+}
+
+.submit-btn {
+  padding: 0.8em 1.5em;
+  color: var(--text-light);
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--primary-color-btn);
+  transition: 0.2s;
+  box-shadow: var(--box-shadow-btn);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success-message {
+  color: var(--primary-color);
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+  .input-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .name-input {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .results-container {
     margin: 1rem;

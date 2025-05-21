@@ -1,8 +1,32 @@
 <div class="results-container" *ngIf="gameResults">
   <h2>Game Results</h2>
 
-  <button (click)="playAgain()" class="button">Play Again</button>
+  <div class="button-container">
+    <button (click)="playAgain()" class="button">Play Again</button>
+    <button routerLink="/leaderboard" class="button">View Leaderboard</button>
+  </div>
   <br>
+
+  <div class="name-input-container" *ngIf="showNameInput && !nameSubmitted">
+    <h3>Congratulations! Your score qualifies for the leaderboard!</h3>
+    <div class="input-group">
+      <input 
+        type="text" 
+        [(ngModel)]="playerName"
+        placeholder="Enter your name"
+        maxlength="20"
+        class="name-input"
+      >
+      <button (click)="submitScore()" class="submit-btn" [disabled]="!playerName.trim()">
+        Submit Score
+      </button>
+    </div>
+  </div>
+
+  <div class="success-message" *ngIf="nameSubmitted">
+    Score submitted to leaderboard!
+  </div>
+
   <div class="results-card">
     <div class="score-header">
       <div class="region">Region</div>
