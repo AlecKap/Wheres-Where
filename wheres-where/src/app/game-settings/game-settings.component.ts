@@ -19,7 +19,8 @@ export class GameSettingsComponent {
 
   constructor(
     private router: Router,
-    private countryDataService: CountryDataService
+    private countryDataService: CountryDataService,
+    public soundService: SoundService
   ) {}
   
   startGame() {
@@ -41,6 +42,12 @@ export class GameSettingsComponent {
 
     localStorage.setItem('gameSettings', JSON.stringify(gameSettings));
     this.router.navigate(['/game']);
+  }
+
+  selectContinent(continent: string) {
+    console.log('Selected continent:', continent);
+    this.selectedContinent = continent;
+    console.log('Selected continent:', this.selectedContinent);
   }
 }
 
