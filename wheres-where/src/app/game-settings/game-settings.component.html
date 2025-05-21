@@ -6,7 +6,7 @@
     <div class="setting-group">
       <h3>Audio</h3>
       <label class="switch">
-        <input checked="" type="checkbox" class="toggle">
+        <input checked="" type="checkbox" class="toggle" (click)="soundService.playClick()">
         <span class="slider"></span>
         <span class="card-side"></span>
       </label>
@@ -22,7 +22,7 @@
             name="questionCount" 
             [value]="option" 
             [(ngModel)]="selectedQuestions"
-          />
+          (click)="soundService.playClick()"/>
           <span>{{ option }}</span>
         </label>
         <span class="selection"></span>
@@ -31,8 +31,8 @@
     <div class="mobile-select">
       <div class="setting-group">
         <h3>Select Continent</h3>
-        <select [(ngModel)]="selectedContinent" class="continent-select">
-          <option *ngFor="let continent of continents" [value]="continent">
+        <select [(ngModel)]="selectedContinent" class="continent-select" >
+          <option *ngFor="let continent of continents" [value]="continent" (click)="soundService.playClick()">
             {{continent}}
           </option>
         </select>
@@ -43,7 +43,7 @@
       <div class="setting-group">
         <h3>Select a Continent</h3>
         <h3> {{ selectedContinent }}</h3>
-        <div class="menu">
+        <div class="menu" (click)="soundService.playClick()">
           <a (click)="selectContinent('All Continents')" class="link" [class.selected]="selectedContinent === 'All Continents'">
             <span class="link-icon">
               <img 
@@ -125,6 +125,6 @@
       </div>
     </div>
 
-    <button (click)="soundService.playClick(); startGame()"  class="button">Start Game</button>
+    <button (click)="soundService.playClick(); startGame()"  class="button" (click)="soundService.playClick()">Start Game</button>
   </div>
 </div>
