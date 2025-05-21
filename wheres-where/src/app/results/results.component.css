@@ -9,7 +9,7 @@
 
 h2 {
   text-align: center;
-  color: var(--text-dark);
+  color: var(--primary-color-dark);
   margin-bottom: 2rem;
   font-size: 2rem;
 }
@@ -90,6 +90,32 @@ h2 {
   background-color: var(--primary-color-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.button {
+  display: block;
+  margin: 2rem auto 0;
+  color: var(--text-light);
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--primary-color-btn);
+  transition: 0.2s;
+  box-shadow: var(--box-shadow-btn);
+}
+
+.button:hover {
+  color: var(--text-light);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--secondary-color);
+  box-shadow: 0.25rem 0.25rem var(--secondary-color-dark);
+}
+
+.button:active {
+  transform: translate(0);
+  box-shadow: none;
+  background: var(--secondary-color);
 }
 
 @media screen and (max-width: 600px) {

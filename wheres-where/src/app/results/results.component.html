@@ -1,6 +1,8 @@
 <div class="results-container" *ngIf="gameResults">
   <h2>Game Results</h2>
-  
+
+  <button (click)="playAgain()" class="button">Play Again</button>
+  <br>
   <div class="results-card">
     <div class="score-header">
       <div class="region">Region</div>
@@ -41,6 +43,4 @@
       </div>
     </div>
   </div>
-
-  <button (click)="playAgain()" class="play-again-btn">Play Again</button>
 </div>
