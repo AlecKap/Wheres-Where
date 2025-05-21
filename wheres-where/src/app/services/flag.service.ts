@@ -13,7 +13,6 @@ export class FlagService {
   
   async getCountryFlag(countryName: string) {
     let data = await this.http.get<FlagResponse[]>(`${this.baseUrl}/${countryName}?fields=flags`).toPromise();
-    console.log(data);
     return data;
   }
 }
