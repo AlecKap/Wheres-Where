@@ -51,4 +51,17 @@ export class CountryDataService {
     const allCountries = Object.values(this.countryData).flat();
     return allCountries[Math.floor(Math.random() * allCountries.length)];
   }
+
+  getCountryContinent(country: string): string {
+    for (const [continent, countries] of Object.entries(this.countryData)) {
+      if (countries.includes(country)) {
+        switch(continent) {
+          case 'northAmerica': return 'North America';
+          case 'southAmerica': return 'South America';
+          default: return continent.charAt(0).toUpperCase() + continent.slice(1);
+        }
+      }
+    }
+    return 'Unknown';
+  }
 }
