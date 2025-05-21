@@ -43,13 +43,37 @@ export class CountryDataService {
     ]
   };
 
+  private usedCountries: Set<string> = new Set();
+
+  resetUsedCountries() {
+    this.usedCountries.clear();
+  }
+
   getRandomCountry(continent?: string): string {
+    let availableCountries: string[];
+
     if (continent && this.countryData[continent]) {
-      const countries = this.countryData[continent];
-      return countries[Math.floor(Math.random() * countries.length)];
+      availableCountries = this.countryData[continent].filter(
+        country => !this.usedCountries.has(country)
+      );
+    } else {
+      availableCountries = Object.values(this.countryData)
+        .flat()
+        .filter(country => !this.usedCountries.has(country));
     }
-    const allCountries = Object.values(this.countryData).flat();
-    return allCountries[Math.floor(Math.random() * allCountries.length)];
+
+    if (availableCountries.length === 0) {
+      console.warn('All countries have been used in this round!');
+      return '';
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableCountries.length);
+    const selectedCountry = availableCountries[randomIndex];
+    
+    this.usedCountries.add(selectedCountry);
+    console.log(this.usedCountries);
+    console.log('availableCountries:', availableCountries);
+    return selectedCountry;
   }
 
   getCountryContinent(country: string): string {
