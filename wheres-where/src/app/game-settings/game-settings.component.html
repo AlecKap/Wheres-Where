@@ -4,6 +4,15 @@
   
   <div class="settings-form">
     <div class="setting-group">
+      <h3>Audio</h3>
+      <label class="switch">
+        <input checked="" type="checkbox" class="toggle">
+        <span class="slider"></span>
+        <span class="card-side"></span>
+      </label>
+    </div>
+
+    <div class="setting-group">
       <h3>Number of Questions</h3>
       <div class="radio-input">
         <label *ngFor="let option of questionOptions">
@@ -19,16 +28,103 @@
         <span class="selection"></span>
       </div>
     </div>
-
-    <div class="setting-group">
-      <h3>Select Continent</h3>
-      <select [(ngModel)]="selectedContinent" class="continent-select">
-        <option *ngFor="let continent of continents" [value]="continent">
-          {{continent}}
-        </option>
-      </select>
+    <div class="mobile-select">
+      <div class="setting-group">
+        <h3>Select Continent</h3>
+        <select [(ngModel)]="selectedContinent" class="continent-select">
+          <option *ngFor="let continent of continents" [value]="continent">
+            {{continent}}
+          </option>
+        </select>
+      </div>
     </div>
 
-    <button (click)="startGame()" class="button">Start Game</button>
+    <div class="desktop-select">
+      <div class="setting-group">
+        <h3>Select a Continent</h3>
+        <h3> {{ selectedContinent }}</h3>
+        <div class="menu">
+          <a (click)="selectContinent('All Continents')" class="link" [class.selected]="selectedContinent === 'All Continents'">
+            <span class="link-icon">
+              <img 
+                src="assets/continent-icons/all.svg" 
+                width="50" 
+                height="50" 
+                alt="All continents icon"
+              />
+            </span>
+            <span class="link-title">All</span>
+          </a>
+          <a (click)="selectContinent('Africa')" class="link" [class.selected]="selectedContinent === 'Africa'">
+            <span class="link-icon">
+              <img 
+                src="assets/continent-icons/africa.svg" 
+                width="40" 
+                height="40" 
+                alt="All continents icon"
+              />
+            </span>
+            <span class="link-title">Africa</span>
+          </a>
+          <a (click)="selectContinent('Asia')" class="link" [class.selected]="selectedContinent === 'Asia'">
+            <span class="link-icon">
+              <img 
+                src="assets/continent-icons/asia.svg" 
+                width="45" 
+                height="45" 
+                alt="All continents icon"
+              />
+            </span>
+            <span class="link-title">Asia</span>
+          </a>
+          <a (click)="selectContinent('North America')" class="link" [class.selected]="selectedContinent === 'North America'">
+            <span class="link-icon">
+            <img 
+                src="assets/continent-icons/na.svg" 
+                width="45" 
+                height="45" 
+                alt="All continents icon"
+              />
+            </span>
+            <span class="link-title">N.A.</span>
+          </a>
+          <a (click)="selectContinent('South America')" class="link" [class.selected]="selectedContinent === 'South America'">
+            <span class="link-icon">
+              <img 
+                src="assets/continent-icons/sa.svg" 
+                width="45" 
+                height="40" 
+                alt="All continents icon"
+              />
+            </span>
+            <span class="link-title">S.A.</span>
+          </a>
+          <a (click)="selectContinent('Europe')" class="link" [class.selected]="selectedContinent === 'Europe'">
+            <span class="link-icon">
+              <img 
+                src="assets/continent-icons/eu.svg" 
+                width="45" 
+                height="40" 
+                alt="All continents icon"
+              />
+            </span>
+            <span class="link-title">E.U.</span>
+          </a>
+          <a (click)="selectContinent('Oceania')" class="link" [class.selected]="selectedContinent === 'Oceania'">
+            <span class="link-icon">
+              <img 
+                src="assets/continent-icons/oceania.svg" 
+                width="45" 
+                height="40" 
+                alt="All continents icon"
+              />
+            </span>
+            <span class="link-title">Oceania</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <button (click)="soundService.playClick(); startGame()"  class="button">Start Game</button>
   </div>
 </div>
