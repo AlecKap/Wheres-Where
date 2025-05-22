@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameResults } from '../models/game-results.interface';
+import { SoundService } from '../services/sound.service';
+import { startConfettiRain, stopConfettiRain } from '../utils/confetti-launcher';
+
+
 
 @Component({
   selector: 'app-results',
@@ -8,14 +12,14 @@ import { GameResults } from '../models/game-results.interface';
   templateUrl: './results.component.html',
   styleUrl: './results.component.css'
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements OnInit, OnDestroy {
   gameResults: GameResults | null = null;
   objectKeys = Object.keys;
   showNameInput: boolean = false;
   playerName: string = '';
   nameSubmitted: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public soundService: SoundService) {}
 
   ngOnInit() {
     const resultsJson = localStorage.getItem('gameResults');
@@ -25,7 +29,11 @@ export class ResultsComponent implements OnInit {
       const percentage = this.gameResults?.totalScore?.percentage;
       const numOfQuestions = this.gameResults?.totalScore?.total;
       if (percentage && !isNaN(percentage) && percentage >= 70 && numOfQuestions && numOfQuestions >= 10) {
+        startConfettiRain();
         this.showNameInput = true;
+        this.soundService.playWin();
+       /* document.addEventListener('click', stopConfettiRain, { once: true });*/
+
       }
     } catch (error) {
       console.error('Error parsing game results:', error);
@@ -75,4 +83,8 @@ export class ResultsComponent implements OnInit {
     this.gameResults!.continentScores[a].percentage
   );
   }
+  ngOnDestroy(): void {
+  stopConfettiRain();
+  this.soundService.stopWin();
+}
 }
