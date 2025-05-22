@@ -24,4 +24,8 @@ export class NavbarComponent {
   isLeaderboardPage(): boolean { 
     return this.router.url === '/leaderboard';
   }
+
+  isGameSettingsPage(): boolean {
+    return this.router.url === '/game-settings';
+  }
 }
