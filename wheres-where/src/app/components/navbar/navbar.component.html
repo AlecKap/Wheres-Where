@@ -2,6 +2,15 @@
   <h1 *ngIf="isHomePage()" class="centered">Welcome to Where's Where!</h1>
   <h1 *ngIf="!isHomePage()" [class.centered]="isHomePage()">Where's Where!</h1>
   <div class="nav-buttons">
+    <div *ngIf="!isHomePage() && !isGameSettingsPage()" class="setting-group-audio">
+      <h3>Audio</h3>
+      <label class="switch">
+        <input checked="" type="checkbox" class="toggle"  [checked]="!soundService.isMuted()" 
+      (change)="soundService.toggleMute()" (click)="soundService.playClick()">
+        <span class="slider"></span>
+        <span class="card-side"></span>
+      </label>
+    </div>
     <button *ngIf="isResultsPage() || isLeaderboardPage()" routerLink="/game-settings" class="button" (click)="soundService.playClick()">New Game</button>
     <button *ngIf="!isHomePage()" routerLink="" class="button" (click)="soundService.playClick()">Back To Main Menu</button>
   </div>
