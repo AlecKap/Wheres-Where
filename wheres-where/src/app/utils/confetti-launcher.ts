@@ -24,7 +24,7 @@ export const startConfettiRain = (result: any) => {
         scalar: 2.5,
         particleCount: 500,
         spread: 900,
-        gravity: 0.36,
+        gravity: 0.16,
         startVelocity: 60,
         ticks: 600,
         
@@ -38,8 +38,8 @@ export const startConfettiRain = (result: any) => {
       scalar: 2.5,
       particleCount: 5,
       spread: 40,
-      gravity: 0.35,
-      startVelocity: 30,
+      gravity: 0.15,
+      startVelocity: 20,
       ticks: 600,
       origin: {
         x: i / 10 + Math.random() * 0.05,
