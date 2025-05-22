@@ -8,7 +8,7 @@ const shape2 = confetti.shapeFromText({ text: ' 🎈' });
 const shape3 = confetti.shapeFromText({ text: '🏆' });
 const winshapes = [shape1, shape2, shape3];
 
-const lose1 = confetti.shapeFromText({ text: '🌍' });
+const lose1 = confetti.shapeFromText({ text: '💩' });
 const lose2 = confetti.shapeFromText({ text: '💩 ' });
 const lose3 = confetti.shapeFromText({ text: '💩' });
 const loseShapes = [lose1, lose2, lose3];
