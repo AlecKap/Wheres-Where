@@ -68,9 +68,10 @@ export class GameComponent implements OnInit {
   }
 
   checkAnswer(guess: string): boolean {
-    const normalizedGuess = guess.toLowerCase().trim();
-    const normalizedAnswer = this.currentCountry.toLowerCase().trim();
-    return normalizedGuess === normalizedAnswer;
+    const normalize = (str: string) =>
+    str.toLowerCase().replace(/[\s\-]/g, '').trim();
+
+    return normalize(guess) === normalize(this.currentCountry);
   }
 
   submitGuess() {

@@ -6,7 +6,8 @@
     <div class="setting-group-audio">
       <h3>Audio</h3>
       <label class="switch">
-        <input checked="" type="checkbox" class="toggle" (click)="soundService.playClick()">
+        <input checked="" type="checkbox" class="toggle"  [checked]="!soundService.isMuted()" 
+      (change)="soundService.toggleMute()" (click)="soundService.playClick()">
         <span class="slider"></span>
         <span class="card-side"></span>
       </label>
