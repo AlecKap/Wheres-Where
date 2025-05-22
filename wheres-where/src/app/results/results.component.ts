@@ -18,6 +18,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   showNameInput: boolean = false;
   playerName: string = '';
   nameSubmitted: boolean = false;
+  win: boolean = false;
 
   constructor(private router: Router, public soundService: SoundService) {}
 
@@ -37,6 +38,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
       } else if(percentage && !isNaN(percentage) && percentage > 70) {
         this.soundService.playWin();
         startConfettiRain("win");
+        this.win = true;
       } else {
         this.soundService.playLose();
         startConfettiRain("lose");
