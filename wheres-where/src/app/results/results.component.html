@@ -8,19 +8,34 @@
   <br>
 
   <div class="name-input-container" *ngIf="showNameInput && !nameSubmitted">
-    <h3>Congratulations! Your score qualifies for the leaderboard!</h3>
-    <div class="input-group">
-      <input 
-        type="text" 
-        [(ngModel)]="playerName"
-        placeholder="Enter your name"
-        maxlength="20"
-        class="name-input"
-      >
-      <button (click)="submitScore()" class="submit-btn" [disabled]="!playerName.trim()">
-        Submit Score
-      </button>
-    </div>
+    <h3>You crushed it! Add your name to the leaderboard.</h3>
+    <div class="centered-wrapper">
+    <div class="input-container">
+  <input
+    type="text"
+    [(ngModel)]="playerName"
+    placeholder="Enter your name"
+    maxlength="20"
+    name="username"
+  />
+
+  <button
+    (click)="soundService.playClick();submitScore()"
+    [disabled]="!playerName.trim()"
+    
+  >ADD ME
+  <img 
+    src="assets/leaderboard-icons/medal.png" 
+    alt="Medal" 
+    width="20" 
+    height="20" 
+    style="margin-right: 0.5rem; vertical-align: middle;"
+  >
+   
+  </button>
+</div>
+</div>
+
   </div>
 
   <div class="success-message" *ngIf="nameSubmitted">
