@@ -29,12 +29,19 @@ export class ResultsComponent implements OnInit, OnDestroy {
       const percentage = this.gameResults?.totalScore?.percentage;
       const numOfQuestions = this.gameResults?.totalScore?.total;
       if (percentage && !isNaN(percentage) && percentage >= 70 && numOfQuestions && numOfQuestions >= 10) {
-        startConfettiRain();
+        startConfettiRain("win");
         this.showNameInput = true;
         this.soundService.playWin();
        /* document.addEventListener('click', stopConfettiRain, { once: true });*/
 
-      }
+      } else if(percentage && !isNaN(percentage) && percentage > 70) {
+        this.soundService.playWin();
+        startConfettiRain("win");
+      } else {
+        this.soundService.playLose();
+        startConfettiRain("lose");
+  
+        }
     } catch (error) {
       console.error('Error parsing game results:', error);
       this.router.navigate(['']);
@@ -86,5 +93,6 @@ export class ResultsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   stopConfettiRain();
   this.soundService.stopWin();
+  this.soundService.stopLose();
 }
 }

@@ -11,6 +11,7 @@ export class SoundService {
   private wrong = new Howl({ src: ['assets/sounds/wrong.mp3'] });
   private click = new Howl({ src: ['assets/sounds/click.mp3'] });
   private win = new Howl({ src: ['assets/sounds/win.mp3'] });
+  private lose = new Howl({ src: ['assets/sounds/lose.mp3'] });
 
 
   toggleMute(): void {
@@ -37,7 +38,13 @@ export class SoundService {
   if (!this.muted) this.win.play();
 }
 
-  stopWin() {
+stopWin() {
   this.win.stop();
+}
+playLose() {
+  if (!this.muted) this.lose.play();
+}
+stopLose() {
+  this.lose.stop();
 }
 }
