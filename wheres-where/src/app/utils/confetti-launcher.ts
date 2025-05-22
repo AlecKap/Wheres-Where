@@ -6,9 +6,18 @@ let rainInterval: any = null;
 const shape1 = confetti.shapeFromText({ text: '🌍' });
 const shape2 = confetti.shapeFromText({ text: ' 🎈' });
 const shape3 = confetti.shapeFromText({ text: '🏆' });
-const shapes = [shape1, shape2, shape3];
+const winshapes = [shape1, shape2, shape3];
 
-export const startConfettiRain = () => {
+const lose1 = confetti.shapeFromText({ text: '🌍' });
+const lose2 = confetti.shapeFromText({ text: '💩 ' });
+const lose3 = confetti.shapeFromText({ text: '💩' });
+const loseShapes = [lose1, lose2, lose3];
+let shapes: any[];
+export const startConfettiRain = (result: any) => {
+  if (result === 'lose') {
+    shapes = loseShapes;
+  }
+  else{ shapes = winshapes}
   //initial confetti 
   confetti({
         shapes,
