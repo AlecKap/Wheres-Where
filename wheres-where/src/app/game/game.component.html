@@ -17,12 +17,19 @@
         required
       >
     </div>
-    <div *ngIf="errorMessage" class="error-message">
+     <div class="message-container">
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <p class="correct-answer" *ngIf="showCorrectAnswer">
+        The correct answer was: {{ currentCountry }}
+      </p>
+      <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
+    </div>
+    <!-- <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
     <div *ngIf="successMessage" class="success-message">
       {{ successMessage }}
-    </div>
+    </div> -->
     <div class="button-container">
       <button type="submit" class="button" (click)="soundService.playClick()">Submit Guess</button>
       <button
