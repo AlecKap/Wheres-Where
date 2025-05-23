@@ -17,10 +17,11 @@
           <button 
             class="mute-button" 
             (click)="soundService.toggleEffectsMute()"
-            [class.muted]="soundService.isEffectsMuted()"
+            [class.muted]="soundService.isEffectsMuted() || soundService.isMuted()"
+            [disabled]="soundService.isMuted()"
           >
-            <span *ngIf="!soundService.isEffectsMuted()">🔊</span>
-            <span *ngIf="soundService.isEffectsMuted()">🔇</span>
+            <span *ngIf="!soundService.isEffectsMuted() && !soundService.isMuted()">🔊</span>
+            <span *ngIf="soundService.isEffectsMuted() || soundService.isMuted()">🔇</span>
           </button>
           <label>Sound Effects</label>
           <input 
@@ -30,10 +31,10 @@
             [value]="effectsVolume" 
             (input)="updateEffectsVolume($event)"
             class="volume-slider"
-            [class.muted]="soundService.isEffectsMuted()"
-            [disabled]="soundService.isEffectsMuted()"
+            [class.muted]="soundService.isEffectsMuted() || soundService.isMuted()"
+            [disabled]="soundService.isEffectsMuted() || soundService.isMuted()"
           >
-          <span class="volume-value" [class.muted]="soundService.isEffectsMuted()">
+          <span class="volume-value" [class.muted]="soundService.isEffectsMuted() || soundService.isMuted()">
             {{ effectsVolume }}%
           </span>
         </div>
@@ -42,10 +43,11 @@
           <button 
             class="mute-button" 
             (click)="soundService.toggleMusicMute()"
-            [class.muted]="soundService.isMusicMuted()"
+            [class.muted]="soundService.isMusicMuted() || soundService.isMuted()"
+            [disabled]="soundService.isMuted()"
           >
-            <span *ngIf="!soundService.isMusicMuted()">🎵</span>
-            <span *ngIf="soundService.isMusicMuted()">🎵</span>
+            <span *ngIf="!soundService.isMusicMuted() && !soundService.isMuted()">🎵</span>
+            <span *ngIf="soundService.isMusicMuted() || soundService.isMuted()">🎵</span>
           </button>
           <label>Music</label>
           <input 
@@ -55,10 +57,10 @@
             [value]="musicVolume" 
             (input)="updateMusicVolume($event)"
             class="volume-slider"
-            [class.muted]="soundService.isMusicMuted()"
-            [disabled]="soundService.isMusicMuted()"
+            [class.muted]="soundService.isMusicMuted() || soundService.isMuted()"
+            [disabled]="soundService.isMusicMuted() || soundService.isMuted()"
           >
-          <span class="volume-value" [class.muted]="soundService.isMusicMuted()">
+          <span class="volume-value" [class.muted]="soundService.isMusicMuted() || soundService.isMuted()">
             {{ musicVolume }}%
           </span>
         </div>
