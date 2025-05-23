@@ -22,6 +22,9 @@ export class GameComponent implements OnInit {
   questionsRemaining: number = 0;
   skipsRemaining: number = 3;
   showCorrectAnswer: boolean = false;
+  showHint: boolean = false;
+  hintsRemaining: number = 5;
+  hintUsed: boolean = false;
   private gameResults: GameResults = {
     totalScore: { correct: 0, total: 0, percentage: 0 },
     continentScores: {},
@@ -48,6 +51,8 @@ export class GameComponent implements OnInit {
   getNewCountry() {
     const continent = this.gameSettings?.selectedContinent || undefined;
     const newCountry = this.countryDataService.getRandomCountry(continent);
+    this.showHint = false;
+    this.hintUsed = false;
 
     if (!newCountry) {
       localStorage.setItem('gameResults', JSON.stringify(this.gameResults));
@@ -128,7 +133,7 @@ export class GameComponent implements OnInit {
         this.getNewCountry();
         this.errorMessage = '';
         this.showCorrectAnswer = false;
-      }, 5000);
+      }, 4000);
     }
     
     this.gameResults.totalScore.total++;
@@ -162,5 +167,21 @@ export class GameComponent implements OnInit {
     this.getNewCountry();
     this.playerGuess = '';
     this.errorMessage = '';
+  }
+
+  getHint(): string {
+    if (!this.currentCountry) return '';
+    const firstTwo = this.currentCountry.slice(0, 2);
+    const remaining = '-'.repeat(this.currentCountry.length - 2);
+    return firstTwo + remaining;
+  }
+
+  showCountryHint(): void {
+    if (this.hintsRemaining > 0) {
+      this.showHint = true;
+      this.hintsRemaining--;
+      this.hintUsed = true;
+      this.soundService.playClick();
+    }
   }
 }
