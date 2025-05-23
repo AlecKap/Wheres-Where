@@ -1,4 +1,3 @@
-
 <div class="settings-container">
   <h2>Game Settings</h2>
   
@@ -15,8 +14,15 @@
       </div>
       <div class="vol-sliders">
         <div class="volume-control">
-          <span class="volume-icon">🔊</span>
-          <label>SFX</label>
+          <button 
+            class="mute-button" 
+            (click)="soundService.toggleEffectsMute()"
+            [class.muted]="soundService.isEffectsMuted()"
+          >
+            <span *ngIf="!soundService.isEffectsMuted()">🔊</span>
+            <span *ngIf="soundService.isEffectsMuted()">🔇</span>
+          </button>
+          <label>Sound Effects</label>
           <input 
             type="range" 
             min="0" 
@@ -24,12 +30,23 @@
             [value]="effectsVolume" 
             (input)="updateEffectsVolume($event)"
             class="volume-slider"
+            [class.muted]="soundService.isEffectsMuted()"
+            [disabled]="soundService.isEffectsMuted()"
           >
-          <span class="volume-value">{{ effectsVolume }}%</span>
+          <span class="volume-value" [class.muted]="soundService.isEffectsMuted()">
+            {{ effectsVolume }}%
+          </span>
         </div>
 
         <div class="volume-control">
-          <span class="volume-icon">🎵</span>
+          <button 
+            class="mute-button" 
+            (click)="soundService.toggleMusicMute()"
+            [class.muted]="soundService.isMusicMuted()"
+          >
+            <span *ngIf="!soundService.isMusicMuted()">🎵</span>
+            <span *ngIf="soundService.isMusicMuted()">🎵</span>
+          </button>
           <label>Music</label>
           <input 
             type="range" 
@@ -38,8 +55,12 @@
             [value]="musicVolume" 
             (input)="updateMusicVolume($event)"
             class="volume-slider"
+            [class.muted]="soundService.isMusicMuted()"
+            [disabled]="soundService.isMusicMuted()"
           >
-          <span class="volume-value">{{ musicVolume }}%</span>
+          <span class="volume-value" [class.muted]="soundService.isMusicMuted()">
+            {{ musicVolume }}%
+          </span>
         </div>
       </div>
     </div>
