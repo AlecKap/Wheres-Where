@@ -13,6 +13,7 @@ import { FlagComponent } from './components/flag/flag.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { McGameComponent } from './mc-game/mc-game.component';
+import { AudioModalComponent } from './audio-modal/audio-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { McGameComponent } from './mc-game/mc-game.component';
     NavbarComponent,
     FlagComponent,
     McGameComponent,
+    AudioModalComponent,
   ],
   imports: [
     BrowserModule,

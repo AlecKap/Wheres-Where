@@ -1,0 +1,57 @@
+<button class="button" (click)="toggleModal()">
+  Audio Settings
+</button>
+
+<div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Audio Settings</h3>
+    
+    <div class="volume-controls">
+      <div class="volume-control">
+        <button 
+          class="mute-button" 
+          (click)="soundService.toggleEffectsMute()"
+          [class.muted]="soundService.isEffectsMuted()"
+        >
+          <span *ngIf="!soundService.isEffectsMuted()">🔊</span>
+          <span *ngIf="soundService.isEffectsMuted()">🔇</span>
+        </button>
+        <label>Sound Effects</label>
+        <input 
+          type="range" 
+          min="0" 
+          max="100" 
+          [value]="effectsVolume" 
+          (input)="updateEffectsVolume($event)"
+          class="volume-slider"
+          [class.muted]="soundService.isEffectsMuted()"
+        >
+        <span class="volume-value">{{ effectsVolume }}%</span>
+      </div>
+
+      <div class="volume-control">
+        <button 
+          class="mute-button" 
+          (click)="soundService.toggleMusicMute()"
+          [class.muted]="soundService.isMusicMuted()"
+        >
+          <span *ngIf="!soundService.isMusicMuted()">🎵</span>
+          <span *ngIf="soundService.isMusicMuted()">🎵</span>
+        </button>
+        <label>Music</label>
+        <input 
+          type="range" 
+          min="0" 
+          max="100" 
+          [value]="musicVolume" 
+          (input)="updateMusicVolume($event)"
+          class="volume-slider"
+          [class.muted]="soundService.isMusicMuted()"
+        >
+        <span class="volume-value">{{ musicVolume }}%</span>
+      </div>
+    </div>
+
+    <button class="close-btn" (click)="toggleModal()">Close</button>
+  </div>
+</div>

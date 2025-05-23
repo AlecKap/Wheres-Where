@@ -1,0 +1,121 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--bg-color-wht);
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 300px;
+  box-shadow: var(--box-shadow);
+}
+
+.volume-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.volume-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--secondary-color-light);
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-settings-btn {
+  color: var(--text-light);
+  background: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.audio-settings-btn:hover {
+  background: var(--primary-color-dark);
+}
+
+.close-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.close-btn:hover {
+  background: var(--primary-color-dark);
+}
+
+.mute-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.mute-button:hover {
+  background: var(--secondary-color-light);
+}
+
+.mute-button.muted {
+  opacity: 0.5;
+}
+
+.button {
+  color: var(--text-light);
+  cursor: pointer;
+  border: 1px solid var(--primary-color-dark);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--primary-color);
+  transition: 0.2s;
+  box-shadow: var(--box-shadow-btn);
+}
+
+.button:hover {
+  color: var(--text-light);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--primary-color-dark);
+  box-shadow: 0.25rem 0.25rem var(--secondary-color-dark);
+}
+
+.button:active {
+  transform: translate(0);
+  box-shadow: none;
+}
