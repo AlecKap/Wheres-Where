@@ -68,12 +68,26 @@ export class SoundService {
   toggleMute(): void {
     this.muted = !this.muted;
     if (this.muted) {
-      this.lobbyMusic.pause();
-      this.win.stop();
-      this.lose.stop();
+      this.effectsMuted = true;
+      this.musicMuted = true;
     } else {
-      this.playLobbyMusic();
+      this.effectsMuted = false;
+      this.musicMuted = false;
     }
+    // Update all audio elements
+    this.updateAllVolumes();
+  }
+
+  private updateAllVolumes(): void {
+    const effectsVol = this.effectsMuted || this.muted ? 0 : this.effectsVolume;
+    const musicVol = this.musicMuted || this.muted ? 0 : this.musicVolume;
+
+    this.correct.volume(effectsVol);
+    this.wrong.volume(effectsVol);
+    this.click.volume(effectsVol);
+    this.win.volume(effectsVol);
+    this.lose.volume(effectsVol);
+    this.lobbyMusic.volume(musicVol);
   }
 
   toggleEffectsMute(): void {
