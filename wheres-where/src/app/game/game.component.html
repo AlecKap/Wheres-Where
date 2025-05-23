@@ -17,11 +17,25 @@
         required
       >
     </div>
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
+     <div class="message-container">
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <p class="correct-answer" *ngIf="showCorrectAnswer">
+        The correct answer was: {{ currentCountry }}
+      </p>
+      <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
     </div>
-    <div *ngIf="successMessage" class="success-message">
-      {{ successMessage }}
+    <div class="hint-container">
+      <button
+        type="button"
+        (click)="showCountryHint()" 
+        class="hint-button" 
+        [disabled]="hintsRemaining === 0 || hintUsed"
+      >
+        Hint ({{ hintsRemaining }} remaining)
+      </button>
+      <p class="hint-text" *ngIf="showHint">
+        Hint: {{ getHint() }}
+      </p>
     </div>
     <div class="button-container">
       <button type="submit" class="button" (click)="soundService.playClick()">Submit Guess</button>

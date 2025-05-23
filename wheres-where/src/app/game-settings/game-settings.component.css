@@ -82,6 +82,17 @@ h3 {
   background: var(--secondary-color);
 }
 
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--secondary-color-dark);
+}
+
+.button:disabled:hover {
+  transform: none;
+  box-shadow: var(--box-shadow-btn);
+}
+
 p {
   margin: 0;
   font-size: 0.8rem;
