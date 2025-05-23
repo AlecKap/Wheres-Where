@@ -34,7 +34,6 @@ export class ResultsComponent implements OnInit, OnDestroy {
         this.showNameInput = true;
         this.soundService.playWin();
         this.win = true;
-       /* document.addEventListener('click', stopConfettiRain, { once: true });*/
 
       } else if(percentage && !isNaN(percentage) && percentage > 70) {
         this.soundService.playWin();
