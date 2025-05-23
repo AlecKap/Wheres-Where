@@ -5,6 +5,8 @@ import { Howl } from 'howler';
   providedIn: 'root',
 })
 export class SoundService {
+  private effectsMuted = false;
+  private musicMuted = false;
   private muted = false;
   private effectsVolume = 0.5;
   private musicVolume = 0.1;
@@ -72,6 +74,29 @@ export class SoundService {
     } else {
       this.playLobbyMusic();
     }
+  }
+
+  toggleEffectsMute(): void {
+    this.effectsMuted = !this.effectsMuted;
+    const volume = this.effectsMuted ? 0 : this.effectsVolume;
+    this.correct.volume(volume);
+    this.wrong.volume(volume);
+    this.click.volume(volume);
+    this.win.volume(volume);
+    this.lose.volume(volume);
+  }
+
+  toggleMusicMute(): void {
+    this.musicMuted = !this.musicMuted;
+    this.lobbyMusic.volume(this.musicMuted ? 0 : this.musicVolume);
+  }
+
+  isEffectsMuted(): boolean {
+    return this.effectsMuted;
+  }
+
+  isMusicMuted(): boolean {
+    return this.musicMuted;
   }
 
   isMuted(): boolean {
