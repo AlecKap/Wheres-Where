@@ -50,9 +50,9 @@ export class SoundService {
   }
 
   stopWin() {
-  this.win.fade(1.0, 0, 500);
-  setTimeout(() => this.win.stop(), 500);
-}
+    this.win.fade(1.0, 0, 500);
+    setTimeout(() => this.win.stop(), 500);
+  }
 
   playLose() {
     if (!this.muted) this.lose.play();
