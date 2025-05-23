@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
   gameSettings: GameSettings | null = null;
   questionsRemaining: number = 0;
   skipsRemaining: number = 3;
+  showCorrectAnswer: boolean = false;
   private gameResults: GameResults = {
     totalScore: { correct: 0, total: 0, percentage: 0 },
     continentScores: {},
@@ -107,6 +108,7 @@ export class GameComponent implements OnInit {
     if (this.checkAnswer(cleanedGuess)) {
       this.soundService.playCorrect();
       this.successMessage = 'Correct!';
+      this.showCorrectAnswer = false;
       this.gameResults.totalScore.correct++;
 
       if (selectedContinent === 'All Continents') {
@@ -121,9 +123,12 @@ export class GameComponent implements OnInit {
     } else {
       this.soundService.playWrong();
       this.errorMessage = 'Incorrect.';
+      this.showCorrectAnswer = true;
       setTimeout(() => {
         this.getNewCountry();
-      }, 600);
+        this.errorMessage = '';
+        this.showCorrectAnswer = false;
+      }, 5000);
     }
     
     this.gameResults.totalScore.total++;
