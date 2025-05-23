@@ -68,10 +68,10 @@ export class SoundService {
   }
 
   stopLobbyMusic() {
-  if (this.lobbyMusic.playing()) {
-    this.lobbyMusic.fade(0.3, 0, 500); // fade over 0.5 seconds
-    setTimeout(() => this.lobbyMusic.stop(), 500);
-  }
+  // if (this.lobbyMusic.playing()) {
+  //   this.lobbyMusic.fade(0.3, 0, 500); // fade over 0.5 seconds
+  //   setTimeout(() => this.lobbyMusic.stop(), 500);
+  // }
 }
 
 }
