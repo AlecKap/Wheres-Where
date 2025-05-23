@@ -117,7 +117,7 @@ export class GameComponent implements OnInit {
 
       setTimeout(() => {
         this.getNewCountry();
-      }, 600);
+      }, 1000);
     } else {
       this.soundService.playWrong();
       this.errorMessage = 'Incorrect.';

@@ -127,6 +127,9 @@
       </div>
     </div>
 
-    <button (click)="soundService.playClick(); startGame()"  class="button" (click)="soundService.playClick()">Start Game</button>
+    
+    <button (click)="soundService.playClick(); startGame('/game')"  class="button" (click)="soundService.playClick()">Start Game</button>
+    <button class="button" routerLink="/mc-game" (click)="soundService.playClick(); startGame('/mc-game')"> Start Multiple Choice Game
+</button>
   </div>
 </div>

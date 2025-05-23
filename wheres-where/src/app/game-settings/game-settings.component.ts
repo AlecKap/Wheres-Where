@@ -23,7 +23,7 @@ export class GameSettingsComponent {
     public soundService: SoundService
   ) {}
   
-  startGame() {
+  startGame(route: string = '/game') {
     const continentMap: { [key: string]: string } = {
       'Africa': 'africa',
       'Asia': 'asia',
@@ -41,7 +41,7 @@ export class GameSettingsComponent {
     };
 
     localStorage.setItem('gameSettings', JSON.stringify(gameSettings));
-    this.router.navigate(['/game']);
+    this.router.navigate([route]);
   }
 
   selectContinent(continent: string) {

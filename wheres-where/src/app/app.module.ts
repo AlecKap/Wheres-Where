@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FlagComponent } from './components/flag/flag.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { McGameComponent } from './mc-game/mc-game.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     GameSettingsComponent,
     NavbarComponent,
     FlagComponent,
+    McGameComponent,
   ],
   imports: [
     BrowserModule,
