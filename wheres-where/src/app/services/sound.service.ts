@@ -24,11 +24,11 @@ export class SoundService {
   });
   private win = new Howl({ 
     src: ['assets/sounds/win.mp3'],
-    volume: this.effectsVolume 
+    volume: this.musicVolume 
   });
   private lose = new Howl({ 
     src: ['assets/sounds/lose.mp3'],
-    volume: this.effectsVolume 
+    volume: this.musicVolume
   });
   private skip = new Howl({ 
     src: ['assets/sounds/skip.mp3'],
