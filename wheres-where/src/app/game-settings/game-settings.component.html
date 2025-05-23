@@ -4,13 +4,44 @@
   
   <div class="settings-form">
     <div class="setting-group-audio">
-      <h3>Audio</h3>
-      <label class="switch">
-        <input checked="" type="checkbox" class="toggle"  [checked]="!soundService.isMuted()" 
-      (change)="soundService.toggleMute()" (click)="soundService.playClick()">
-        <span class="slider"></span>
-        <span class="card-side"></span>
-      </label>
+      <div class="mute-toggel">
+        <h3>Audio</h3>
+        <label class="switch">
+          <input checked="" type="checkbox" class="toggle"  [checked]="!soundService.isMuted()" 
+          (change)="soundService.toggleMute()" (click)="soundService.playClick()">
+          <span class="slider"></span>
+          <span class="card-side"></span>
+        </label>
+      </div>
+      <div class="vol-sliders">
+        <div class="volume-control">
+          <span class="volume-icon">🔊</span>
+          <label>SFX</label>
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            [value]="effectsVolume" 
+            (input)="updateEffectsVolume($event)"
+            class="volume-slider"
+          >
+          <span class="volume-value">{{ effectsVolume }}%</span>
+        </div>
+
+        <div class="volume-control">
+          <span class="volume-icon">🎵</span>
+          <label>Music</label>
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            [value]="musicVolume" 
+            (input)="updateMusicVolume($event)"
+            class="volume-slider"
+          >
+          <span class="volume-value">{{ musicVolume }}%</span>
+        </div>
+      </div>
     </div>
 
     <div class="setting-group">

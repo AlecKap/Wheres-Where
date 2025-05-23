@@ -15,13 +15,18 @@ export class GameSettingsComponent {
   continents: string[] = ['All Continents', 'Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America'];
   selectedQuestions: number = 5;
   selectedContinent: string = 'All Continents';
+  effectsVolume: number = 50;
+  musicVolume: number = 10;
 
 
   constructor(
     private router: Router,
     private countryDataService: CountryDataService,
     public soundService: SoundService
-  ) {}
+  ) {
+    this.effectsVolume = this.soundService.getEffectsVolume() * 100;
+    this.musicVolume = this.soundService.getMusicVolume() * 100;
+  }
   
   startGame(route: string = '/game') {
     const continentMap: { [key: string]: string } = {
@@ -46,6 +51,18 @@ export class GameSettingsComponent {
 
   selectContinent(continent: string) {
     this.selectedContinent = continent;
+  }
+
+  updateEffectsVolume(event: Event): void {
+    const slider = event.target as HTMLInputElement;
+    this.effectsVolume = parseInt(slider.value);
+    this.soundService.setEffectsVolume(this.effectsVolume / 100);
+  }
+
+  updateMusicVolume(event: Event): void {
+    const slider = event.target as HTMLInputElement;
+    this.musicVolume = parseInt(slider.value);
+    this.soundService.setMusicVolume(this.musicVolume / 100);
   }
 }
 

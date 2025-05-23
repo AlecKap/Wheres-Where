@@ -28,6 +28,12 @@ h2 {
 
 .setting-group-audio {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mute-toggel {
+  display: flex;
   align-items: center;
   gap: .7rem;
 }
@@ -99,6 +105,51 @@ p {
   color: var(--text-dark);
   opacity: 0.6;
   text-align: center;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.volume-control label {
+  color: var(--text-dark);
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--secondary-color-light);
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  background: var(--primary-color-dark);
+  transform: scale(1.1);
+}
+
+.volume-value {
+  min-width: 3rem;
+  color: var(--text-dark);
+}
+
+.volume-icon {
+  font-size: 1.2rem;
+  color: var(--text-dark);
 }
 
 @media screen and (max-width: 480px) {
