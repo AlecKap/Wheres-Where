@@ -5,6 +5,8 @@ import { Howl } from 'howler';
   providedIn: 'root',
 })
 export class SoundService {
+  private effectsMuted = false;
+  private musicMuted = false;
   private muted = false;
   private effectsVolume = 0.5;
   private musicVolume = 0.1;
@@ -66,12 +68,49 @@ export class SoundService {
   toggleMute(): void {
     this.muted = !this.muted;
     if (this.muted) {
-      this.lobbyMusic.pause();
-      this.win.stop();
-      this.lose.stop();
+      this.effectsMuted = true;
+      this.musicMuted = true;
     } else {
-      this.playLobbyMusic();
+      this.effectsMuted = false;
+      this.musicMuted = false;
     }
+    // Update all audio elements
+    this.updateAllVolumes();
+  }
+
+  private updateAllVolumes(): void {
+    const effectsVol = this.effectsMuted || this.muted ? 0 : this.effectsVolume;
+    const musicVol = this.musicMuted || this.muted ? 0 : this.musicVolume;
+
+    this.correct.volume(effectsVol);
+    this.wrong.volume(effectsVol);
+    this.click.volume(effectsVol);
+    this.win.volume(effectsVol);
+    this.lose.volume(effectsVol);
+    this.lobbyMusic.volume(musicVol);
+  }
+
+  toggleEffectsMute(): void {
+    this.effectsMuted = !this.effectsMuted;
+    const volume = this.effectsMuted ? 0 : this.effectsVolume;
+    this.correct.volume(volume);
+    this.wrong.volume(volume);
+    this.click.volume(volume);
+    this.win.volume(volume);
+    this.lose.volume(volume);
+  }
+
+  toggleMusicMute(): void {
+    this.musicMuted = !this.musicMuted;
+    this.lobbyMusic.volume(this.musicMuted ? 0 : this.musicVolume);
+  }
+
+  isEffectsMuted(): boolean {
+    return this.effectsMuted;
+  }
+
+  isMusicMuted(): boolean {
+    return this.musicMuted;
   }
 
   isMuted(): boolean {
