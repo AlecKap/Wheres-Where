@@ -13,6 +13,25 @@ const lose2 = confetti.shapeFromText({ text: '💩 ' });
 const lose3 = confetti.shapeFromText({ text: '💩' });
 const loseShapes = [lose1, lose2, lose3];
 let shapes: any[];
+
+const corrct1= confetti.shapeFromText({ text: '✔️' });
+const correct2 = confetti.shapeFromText({ text: ' ✅' });
+const correct3 = confetti.shapeFromText({ text: '✔️' });
+const correctshapes = [shape1, shape2, shape3];
+
+
+
+export const correctConfetti = (result : any) => {
+  confetti({ shapes,
+        scalar: 2.5,
+        particleCount: 10,
+        spread: 900,
+        gravity: 0.16,
+        startVelocity: 60,
+        ticks: 600,
+        
+      });}
+
 export const startConfettiRain = (result: any) => {
   if (result === 'lose') {
     shapes = loseShapes;

@@ -88,4 +88,18 @@ export class CountryDataService {
     }
     return 'Unknown';
   }
+
+  getRandomCountryUnfiltered(continent?: string): string {
+  let countries: string[];
+
+  if (continent && this.countryData[continent]) {
+    countries = this.countryData[continent];
+  } else {
+    countries = Object.values(this.countryData).flat();
+  }
+
+  const randomIndex = Math.floor(Math.random() * countries.length);
+  return countries[randomIndex];
+}
+
 }

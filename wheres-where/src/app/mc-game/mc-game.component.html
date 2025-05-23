@@ -1,0 +1,34 @@
+<div class="game-container">
+    <div class="flag-display">
+        <app-flag [country]="currentCountry"></app-flag>
+    </div>
+
+    <div class="questions-counter">
+        Questions Remaining: {{ questionsRemaining + 1 }}
+    </div>
+
+    <form class="guess-form" (ngSubmit)="submitGuess()">
+        <div class="options-container">
+            <button *ngFor="let option of currentOptions" type="button" class="option-button"
+                [class.selected]="playerGuess === option" (click)="playerGuess = option">
+                {{ option }}
+            </button>
+        </div>
+
+        <!-- Track selected answer -->
+        <input type="hidden" name="guess" [value]="playerGuess" />
+
+        <div class="feedback-container">
+            <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+            <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="button" (click)="soundService.playClick()">Submit</button>
+            <button type="button" class="button" (click)="soundService.playClick(); skipFlag()"
+                [disabled]="skipsRemaining <= 0">
+                {{ skipsRemaining > 0 ? 'Skip (' + skipsRemaining + ' left)' : 'No Skips Left' }}
+            </button>
+        </div>
+    </form>
+</div>
