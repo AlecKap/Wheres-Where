@@ -15,7 +15,7 @@ export class SoundService {
   private lobbyMusic = new Howl({
     src: ['assets/sounds/lobby.mp3'],
     loop: true,
-    volume: 0.3,
+    volume: 0
   });
 
   toggleMute(): void {
@@ -62,9 +62,9 @@ export class SoundService {
   }
 
   playLobbyMusic() {
-    if (!this.muted && !this.lobbyMusic.playing()) {
-      this.lobbyMusic.play();
-    }
+    // if (!this.muted && !this.lobbyMusic.playing()) {
+    //   this.lobbyMusic.play();
+    // }
   }
 
   stopLobbyMusic() {
