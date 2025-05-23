@@ -120,7 +120,7 @@ p {
 
 .volume-slider {
   -webkit-appearance: none;
-  width: 200px;
+  width: 10rem;
   height: 4px;
   border-radius: 2px;
   background: var(--secondary-color-light);
@@ -415,6 +415,15 @@ p {
   .desktop-select {
     display: none;
   }
+
+  .volume-slider {
+  -webkit-appearance: none;
+  width: 7rem;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--secondary-color-light);
+  outline: none;
+}
 
   .continent-select {
     width: 100%;
