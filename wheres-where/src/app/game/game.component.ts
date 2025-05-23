@@ -133,7 +133,7 @@ export class GameComponent implements OnInit {
         this.getNewCountry();
         this.errorMessage = '';
         this.showCorrectAnswer = false;
-      }, 4000);
+      }, 2500);
     }
     
     this.gameResults.totalScore.total++;
@@ -157,7 +157,7 @@ export class GameComponent implements OnInit {
   }
 
   skipFlag() {
-    this.soundService.playWrong();
+    this.soundService.playSkip();
     if (this.skipsRemaining <= 0) {
       this.errorMessage = 'No skips remaining';
       return;
