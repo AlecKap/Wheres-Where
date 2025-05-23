@@ -10,5 +10,11 @@ import { SoundService } from '../services/sound.service';
 })
 export class HomeComponent {
  constructor(public soundService: SoundService) {}
+
+ngOnInit() {
+  this.soundService.stopLobbyMusic();
+  this.soundService.playWin(); // or .playLose()
+}
+
 }
 
