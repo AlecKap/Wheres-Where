@@ -158,6 +158,17 @@
     font-size: 1rem;
     padding: 0.3rem;
   }
+
+  .options-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 350px;
+    gap: 0.5rem;
+  }
+
+  .option-button {
+    padding: 0.5em 0.7em;
+    font-size: 0.85rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -205,6 +216,18 @@
   .questions-counter {
     font-size: 1rem;
     padding: 0.3rem;
+    margin-top: .5rem;
+  }
+
+  .options-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 280px;
+    gap: 0.4rem;
+  }
+
+  .option-button {
+    padding: 0.4em 0.6em;
+    font-size: 0.8rem;
   }
 }
 
@@ -223,21 +246,21 @@
   cursor: pointer;
   display: block;
   text-align: center;
-  padding: 0.5em 0.8em;  /* Reduced padding */
+  padding: 0.5em 0.8em;
   border-radius: 4px;
   background: var(--primary-color-btn);
   color: var(--text-light);
   border: 1px solid var(--primary-color);
   box-shadow: var(--box-shadow-btn);
   transition: 0.2s;
-  font-size: 0.9rem;  /* Reduced font size */
+  font-size: 0.9rem;
   width: 100%;
-  box-sizing: border-box;  /* Added to include padding in width calculation */
+  box-sizing: border-box;
 }
 
 .option-button:hover {
-  transform: translate(-0.15rem, -0.15rem);  /* Reduced transform distance */
-  box-shadow: 0.15rem 0.15rem var(--secondary-color-dark);  /* Reduced shadow size */
+  transform: translate(-0.15rem, -0.15rem);
+  box-shadow: 0.15rem 0.15rem var(--secondary-color-dark);
 }
 
 .option-button:active {
@@ -252,24 +275,10 @@
 }
 
 .feedback-container {
-  min-height: 1.5rem;    /* Reduced from 2.5rem */
+  min-height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 0.25rem 0;     /* Added small margin */
-}
-
-/* Update media queries for responsive grid */
-@media screen and (max-width: 480px) {
-  .options-container {
-    grid-template-columns: 1fr;
-    max-width: 250px;
-    gap: 0.4rem;
-  }
-
-  .option-button {
-    padding: 0.4em 0.6em;
-    font-size: 0.85rem;
-  }
+  margin: 0.25rem 0;
 }
