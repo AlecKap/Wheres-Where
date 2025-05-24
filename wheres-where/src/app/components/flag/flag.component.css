@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
-  margin: 1rem;
 }
 
 .flag-image {
@@ -20,5 +19,16 @@
 
 .error {
   color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .flag-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    margin-bottom: -2rem;
+    margin-top: -1rem;
+  }
 }
 
