@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
   padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
@@ -186,12 +185,10 @@
 @media screen and (max-width: 768px) {
   .game-container {
     padding: 0.5rem;
-    gap: 1rem;
     width: 90%;
   }
 
   .flag-display {
-    padding: 0.5rem;
     display: flex;
     justify-content: center;
   }
@@ -244,7 +241,17 @@
   }
 
   .guess-form {
-    max-width: 95%;
+    gap: .75rem;
+  }
+
+  .flag-display {
+    width: 70%;
+  }
+
+  .flag-display img {
+    max-height: 180px;
+    width: auto;
+    object-fit: contain;
   }
 
   .input-container,
