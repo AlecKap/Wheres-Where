@@ -47,7 +47,6 @@ export class SoundService {
     this.correct.volume(this.effectsVolume);
     this.wrong.volume(this.effectsVolume);
     this.click.volume(this.effectsVolume);
-    this.win.volume(this.effectsVolume);
     this.lose.volume(this.effectsVolume);
     this.skip.volume(this.effectsVolume);
   }
@@ -55,6 +54,7 @@ export class SoundService {
   setMusicVolume(value: number): void {
     this.musicVolume = Math.max(0, Math.min(1, value));
     this.lobbyMusic.volume(this.musicVolume);
+    this.win.volume(this.musicVolume - .05);
   }
 
   getEffectsVolume(): number {
